@@ -31,10 +31,13 @@ function updateRate() {
 }
 
 function updateResult(data) {
-    document.getElementById('result').innerHTML = ""
-
     if (data.error) {
+        document.getElementById('result').innerHTML = ""
+        document.getElementById('principal').value = "";
+
         alert(data.error);
+        document.getElementById('principal').focus();
+
     } else {
         document.getElementById('result').innerHTML = `
             If you deposit <span class="highlight">$${data.principal}</span>,<br>
@@ -43,6 +46,7 @@ function updateResult(data) {
             in the year <span  class="highlight">${data.year}</span>
         `;
     }
+
 
 }
 
